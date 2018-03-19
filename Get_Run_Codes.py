@@ -8,12 +8,15 @@ import subprocess
 
 
 def runcpp(sid,cid):
-    os.system('g++ '+sid+'.cpp -o '+sid+' -std=gnu++11 2>dump')
-    os.system('./'+sid+' 0<'+cid+' 1>'+cid+'out'+sid+' 2>dump')
-    print('Checking difference with Ans!!')
-    #os.system('python Check_Result.py '+cid+' '+sid)
-    subprocess.check_call('python Check_Result.py '+cid+' '+sid,shell=True)
-    print('And Done!!\n')
+    try:
+        os.system('g++ '+sid+'.cpp -o '+sid+' -std=gnu++11 2>dump')
+        os.system('./'+sid+' 0<'+cid+' 1>'+cid+'out'+sid+' 2>dump')
+        print('Checking difference with Ans!!')
+        #os.system('python Check_Result.py '+cid+' '+sid)
+        subprocess.check_call('python Check_Result.py '+cid+' '+sid,shell=True)
+        print('And Done!!\n')
+    except:
+        print('Sorry! Something Went Wrong!! :(')
 
 def checkcppcodes():
     for container in cppcontainers:
@@ -51,14 +54,15 @@ def getcppids():
     checkcppcodes()
 
 def runjava(sid,cid):
-
-    os.system('javac '+javafilename+'.java 2>dump')
-    os.system('java '+javafilename+' 0<'+cid+' 1>'+cid+'out'+sid+' 2>dump')
-    print('Checking difference with Ans!!')
-    #os.system('python Check_Result.py '+cid+' '+sid)
-    subprocess.check_call('python Check_Result_forFuckingJava.py '+cid+' '+sid+' '+javafilename,shell=True)
-    print('And Done!!\n')
-
+    try:
+        os.system('javac '+javafilename+'.java 2>dump')
+        os.system('java '+javafilename+' 0<'+cid+' 1>'+cid+'out'+sid+' 2>dump')
+        print('Checking difference with Ans!!')
+        #os.system('python Check_Result.py '+cid+' '+sid)
+        subprocess.check_call('python Check_Result_forFuckingJava.py '+cid+' '+sid+' '+javafilename,shell=True)
+        print('And Done!!\n')
+    except:
+        print('Sorry! Something Went Wrong!! :(')
 
 def checkjavacodes():
     for container in javacontainers:
@@ -105,11 +109,14 @@ def getjavaids():
     checkjavacodes()
 
 def runpython(sid,cid):
-    os.system('python '+sid+'.py 0<'+cid+' 1>'+cid+'out'+sid+' 2>dump')
-    print('Checking difference with Ans!!')
-    #os.system('python Check_Result.py '+cid+' '+sid)
-    subprocess.check_call('python Check_Result.py '+cid+' '+sid,shell=True)
-    print('And Done!!\n')
+    try:
+        os.system('python '+sid+'.py 0<'+cid+' 1>'+cid+'out'+sid+' 2>dump')
+        print('Checking difference with Ans!!')
+        #os.system('python Check_Result.py '+cid+' '+sid)
+        subprocess.check_call('python Check_Result.py '+cid+' '+sid,shell=True)
+        print('And Done!!\n')
+    except:
+        print('Sorry! Something Went Wrong!! :(')
 
 
 def checkpythoncodes():
